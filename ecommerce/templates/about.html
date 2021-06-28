@@ -1,0 +1,165 @@
+{%extends 'index.html'%}
+{%load static%}
+
+
+    {% block titlee %}
+       About Us
+                
+     {% endblock titlee %}
+
+
+
+     {% block description %}
+     {{setting.description}}
+            
+        {% endblock description %}
+
+
+        {% block keyword %}
+            
+        {% endblock keyword %}
+
+
+
+            {% block header %}
+                {% include "header.html" %}
+            {% endblock header %}
+
+
+             {% block another_content %}
+ <!-- Begin Li's Breadcrumb Area -->
+            <div class="breadcrumb-area">
+                <div class="container">
+                    <div class="breadcrumb-content">
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li class="active">A Propos de nous</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- Li's Breadcrumb Area End Here -->
+            <!-- about wrapper start -->
+            <div class="about-us-wrapper pt-60 pb-40">
+                <div class="container">
+                    <div class="row">
+                        <!-- About Text Start -->
+                        <div class="col-lg-6 order-last order-lg-first">
+                            <div class="about-text-wrap">
+                               
+                                <h2>OXYDOM</h2>
+                                <p>{{setting.description}}</p> <br>
+                                <H4>Services Offerts</H4>
+                                <p> •	Assistance respiratoire à Domicile et en milieu Hospitaliers. </p>
+                                <p> •	Traitement des troubles respiratoire du sommeil.</p>
+                                <p> •	Aide aux traitements des plaies chroniques notamment chez les diabétiques, les Artériques et les brulés. </p>
+                                <p> • 	Perfusion à Domicile. </p>
+                                <p> •	Nutrition entérale à Domicile. </p>
+                                <p> •	Maintien à Domicile des patients chroniques. </p> 
+
+                            </div>
+                        </div>
+                        <!-- About Text End -->
+                        <!-- About Image Start -->
+                        <div class="col-lg-5 col-md-10">
+                            <div class="about-image-wrap">
+                                <img class="img-full" src="{{setting.icon.url}}" alt="About Us" />
+                            </div>
+                        </div>
+                        <!-- About Image End -->
+                    </div>
+                </div>
+            </div>
+             <!-- Begin Counterup Area -->
+             <div class="counterup-area">
+                <div class="container-fluid p-0">
+                    <div class="row no-gutters">
+                        <div class="col-lg-3 col-md-6">
+                            <!-- Begin Limupa Counter Area -->
+                            <div class="limupa-counter white-smoke-bg">
+                                <div class="container">
+                                    <div class="counter-img">
+                                        <img src="images/about-us/icon/1.png" alt="">
+                                    </div>
+                                    <div class="counter-info">
+                                        <div class="counter-number">
+                                            <h3 class="counter">2169</h3>
+                                        </div>
+                                        <div class="counter-text">
+                                            <span>HAPPY CUSTOMERS</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- limupa Counter Area End Here -->
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <!-- Begin limupa Counter Area -->
+                            <div class="limupa-counter gray-bg">
+                                <div class="counter-img">
+                                    <img src="images/about-us/icon/2.png" alt="">
+                                </div>
+                                <div class="counter-info">
+                                    <div class="counter-number">
+                                        <h3 class="counter">2869</h3>
+                                    </div>
+                                    <div class="counter-text">
+                                        <span>PATIENTS RECOVRED</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- limupa Counter Area End Here -->
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <!-- Begin limupa Counter Area -->
+                            <div class="limupa-counter white-smoke-bg">
+                                <div class="counter-img">
+                                    <img src="images/about-us/icon/3.png" alt="">
+                                </div>
+                                <div class="counter-info">
+                                    <div class="counter-number">
+                                        <h3 class="counter">30</h3>
+                                    </div>
+                                    <div class="counter-text">
+                                        <span>YEARS IN SERVICE</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- limupa Counter Area End Here -->
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <!-- Begin limupa Counter Area -->
+                            <div class="limupa-counter gray-bg">
+                                <div class="counter-img">
+                                    <img src="images/about-us/icon/4.png" alt="">
+                                </div>
+                                <div class="counter-info">
+                                    <div class="counter-number">
+                                        <h3 class="counter">1869</h3>
+                                    </div>
+                                    <div class="counter-text">
+                                        <span>COMPLETE ORDERS</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- limupa Counter Area End Here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <hr>
+            </div>
+
+
+                   {% endblock another_content %}
+
+
+
+
+                    {% block footer %}
+
+            {% include "footer.html" %}
+                
+            {% endblock footer %}

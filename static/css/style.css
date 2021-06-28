@@ -550,7 +550,7 @@ textarea:focus {
 /* Slider Progress Bar */
 .slider-active .owl-item.active .slider-progress {
   -webkit-animation: 10000ms ease-in-out 0s normal none 1 running timebar;
-  animation: 5000ms ease-in-out 0s normal none 1 running timebar;
+  animation: 10000ms ease-in-out 0s normal none 1 running timebar;
   background: rgba(0, 0, 0, 0.3);
   height: 5px;
   left: 0;
@@ -3737,11 +3737,11 @@ li.right-menu .cat-mega-menu-2 > li {
 .li-product-remove > a > i {
   font-size: 14px;
   font-weight: normal;
-  color: #242424;
+  color: #eb3e32;
   transition: all 0.3s ease-in-out;
 }
 .li-product-remove > a:hover i {
-  color: #00a3ac;
+  color: #eb3e32;
 }
 .table-content table td.li-product-name {
   font-size: 16px;
@@ -3938,7 +3938,7 @@ p.checkout-coupon input[type="submit"]:hover {
 }
 .country-select label span.required,
 .checkout-form-list label span.required {
-  color: #00a3ac;
+  color: red;
   display: inline-block;
   font-size: 24px;
   line-height: 16px;

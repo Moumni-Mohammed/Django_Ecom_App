@@ -5,12 +5,11 @@ from Product.models import Category, Product, Images
 
 admin.site.register(Category)
 
-admin.site.register(Images)
-
 
 class productImageInline(admin.TabularInline):
     model = Images
-    extra = 1
+    readonly_fields = ('id',)
+    extra = 3
 
 
 class ProductAdmin(admin.ModelAdmin):
@@ -18,7 +17,7 @@ class ProductAdmin(admin.ModelAdmin):
     list_filter = ['title', 'created_at']
     list_per_page = 10
     search_fields = ['title', 'new_price', 'detail']
-    inlines = [productImageInline]
+    prepopulated_fields = {'slug': ('title',)}
 
 
 admin.site.register(Product, ProductAdmin)

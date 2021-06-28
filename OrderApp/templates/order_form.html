@@ -1,0 +1,249 @@
+{%extends 'index.html'%}
+
+{%load static%}
+
+{% load crispy_forms_tags %}
+
+{% block titlee %}
+Checkout
+{% endblock titlee %}
+
+
+
+{% block description %}
+{{setting.description}}
+{% endblock description %}
+
+
+{% block keyword %}
+
+{% endblock keyword %}
+
+
+{% block header %}
+{% include "header.html" %}
+{% endblock header %}
+
+
+{% block another_content %}
+
+<!-- Begin Li's Breadcrumb Area -->
+<div class="breadcrumb-area">
+    <div class="container">
+        <div class="breadcrumb-content">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li class="active">Checkout</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- Li's Breadcrumb Area End Here -->
+<!--Checkout Area Strat-->
+<div class="checkout-area pt-60 pb-30">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="coupon-accordion">
+                    <!--Accordion Start-->
+                    <h3>Returning customer? <span id="showlogin">Click here to login</span></h3>
+                    <div id="checkout-login" class="coupon-content">
+                        <div class="coupon-info">
+                            <p class="coupon-text">Quisque gravida turpis sit amet nulla posuere lacinia. Cras sed
+                                est sit amet ipsum luctus.</p>
+                            <form action="#">
+                                <p class="form-row-first">
+                                    <label>Username or email <span class="required">*</span></label>
+                                    <input type="text">
+                                </p>
+                                <p class="form-row-last">
+                                    <label>Password <span class="required">*</span></label>
+                                    <input type="text">
+                                </p>
+                                <p class="form-row">
+                                    <input value="Login" type="submit">
+                                    <label>
+                                        <input type="checkbox">
+                                        Remember me
+                                    </label>
+                                </p>
+                                <p class="lost-password"><a href="#">Lost your password?</a></p>
+                            </form>
+                        </div>
+                    </div>
+                    <!--Accordion End-->
+                    <!--Accordion Start-->
+                    
+                    <!--Accordion End-->
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-12">
+                <form method='POST' enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="checkbox-form">
+                        <h3>détail de facturation</h3>
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <div class="checkout-form-list">
+                                    <label>First Name <span class="required">*</span></label>
+                                    <input placeholder="" type="text" value="{{user.first_name}}" name="first_name">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="checkout-form-list">
+                                    <label>Last Name <span class="required">*</span></label>
+                                    <input placeholder="" type="text" value="{{user.last_name}}" name="last_name">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="checkout-form-list">
+                                    <label>Address <span class="required">*</span></label>
+                                    <input placeholder="Street address" type="text" value="{{profile.address}}"
+                                        name="address">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="checkout-form-list">
+                                    <label>Town / City <span class="required">*</span></label>
+                                    <input type="text" value="{{profile.city}}" name="city">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="checkout-form-list">
+                                    <label>Country <span class="required">*</span></label>
+                                    <input type="text" value="{{profile.country}}" name="country">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="checkout-form-list">
+                                    <label>Phone <span class="required">*</span></label>
+                                    <input type="text" value="{{profile.phone}}" name="phone">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="checkout-form-list">
+                                    <label>Amount <span class="required">*</span></label>
+                                    <input type="text" value="{{total_amount}}" name="holder" readonly>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="order-button-payment">
+                            <input value="Passer la commande" type="submit">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-6 col-12">
+                <div class="your-order">
+                    <h3>Votre Commande</h3>
+                    <div class="your-order-table table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th class="cart-product-name">Product</th>
+                                    <th class="cart-product-total">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                {% for p in shoping_cart %}
+
+                                <tr class="cart_item">
+                                    <td class="cart-product-name">{{p.product.title}}<strong class="product-quantity">
+                                            × {{p.quantity}}</strong></td>
+                                    <td class="cart-product-total"><span class="amount">{{p.amount}} Dhs</span></td>
+                                </tr>
+                                
+                                {% endfor %}
+
+                            </tbody>
+                            <tfoot>
+                                <tr class="cart-subtotal">
+                                    <th>Cart Subtotal</th>
+                                    <td><span class="amount">{{total_amount}} Dhs</span></td>
+                                </tr>
+                                <tr class="order-total">
+                                    <th>Order Total</th>
+                                    <td><strong><span class="amount">{{total_amount}} Dhs</span></strong></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    <div class="payment-method">
+                        <div class="payment-accordion">
+                            <div id="accordion">
+                                <div class="card">
+                                    <div class="card-header" id="#payment-1">
+                                        <h5 class="panel-title">
+                                            <a class="" data-toggle="collapse" data-target="#collapseOne"
+                                                aria-expanded="true" aria-controls="collapseOne">
+                                                Virement bancaire direct.
+                                            </a>
+                                        </h5>
+                                    </div>
+                                    <div id="collapseOne" class="collapse show" data-parent="#accordion">
+                                        <div class="card-body">
+                                            <p>Effectuez votre paiement directement sur notre compte bancaire. Veuillez utiliser votre ID de commande comme référence de paiement. Votre commande ne sera pas expédiée tant que les fonds n'auront pas été versés sur notre compte.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header" id="#payment-2">
+                                        <h5 class="panel-title">
+                                            <a class="collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                                                aria-expanded="false" aria-controls="collapseTwo">
+                                                Paiement par chèque
+                                            </a>
+                                        </h5>
+                                    </div>
+                                    <div id="collapseTwo" class="collapse" data-parent="#accordion">
+                                        <div class="card-body">
+                                            <p>Effectuez votre paiement directement sur notre compte bancaire. Veuillez utiliser votre ID de commande comme référence de paiement. Votre commande ne sera expédiée que
+                                                les fonds ont été compensés sur notre compte.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header" id="#payment-3">
+                                        <h5 class="panel-title">
+                                            <a class="collapsed" data-toggle="collapse" data-target="#collapseThree"
+                                                aria-expanded="false" aria-controls="collapseThree">
+                                                PayPal
+                                            </a>
+                                        </h5>
+                                    </div>
+                                    <div id="collapseThree" class="collapse" data-parent="#accordion">
+                                        <div class="card-body">
+                                            <p>Effectuez votre paiement directement sur notre compte bancaire. Veuillez utiliser votre ID de commande comme référence de paiement. Votre commande ne sera expédiée que
+                                                les fonds ont été compensés sur notre compte.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="order-button-payment">
+                                <a href="{% url 'home'%}">
+                                    
+                                <input value="Annuler" type="submit"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Checkout Area End-->
+
+
+{% endblock another_content %}
+
+
+{% block footer %}
+
+{% include "footer.html" %}
+
+{% endblock footer %}
